@@ -24,18 +24,26 @@ public class Main {
         arrayList.add("обстановка");
         arrayList.add("беседа");
         arrayList.add("житель");
-        int count;
+        Iterator<String> iter = arrayList.iterator();
         for (int i = 0; i < arrayList.size(); i++) {
-            count = 1;
             for (int j = i + 1; j < arrayList.size(); j++) {
                 if (arrayList.get(i).equals(arrayList.get(j))) {
                     set.add(arrayList.get(i));
                 }
             }
         }
-        String[] resultArr = new String[set.size()];
-        set.toArray(resultArr);
-        System.out.println(Arrays.toString(resultArr));
+        String[] repeatArr = new String[set.size()];
+        set.toArray(repeatArr);
+        System.out.println(Arrays.toString(repeatArr));
+            while (iter.hasNext()) {
+                String str = iter.next();
+                for (int i = 0; i < repeatArr.length; i++) {
+                if (str.equals(repeatArr[i])) {
+                    iter.remove();
+                }
+            }
+        }
+        System.out.println(arrayList);
     }
 
 }
