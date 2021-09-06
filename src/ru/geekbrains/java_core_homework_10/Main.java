@@ -3,10 +3,9 @@ package ru.geekbrains.java_core_homework_10;
 import java.util.*;
 
 public class Main {
-    public static ArrayList<String> arrayList = new ArrayList<>();
-
     public static void main(String[] args) {
-        ArrayList<String> arrayCutList = new ArrayList<>();
+        Set<String> set = new HashSet<>();
+        ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("пропасть");
         arrayList.add("столик");
         arrayList.add("крыло");
@@ -28,29 +27,15 @@ public class Main {
         int count;
         for (int i = 0; i < arrayList.size(); i++) {
             count = 1;
-            for (int j = arrayList.size() - 1; j > i; j--) {
-                if (!(arrayList.get(i).equals(arrayList.get(j)))) {
-                    count++;
-                    arrayCutList.add(arrayList.get(i));
+            for (int j = i + 1; j < arrayList.size(); j++) {
+                if (arrayList.get(i).equals(arrayList.get(j))) {
+                    set.add(arrayList.get(i));
                 }
             }
-            System.out.println(arrayCutList);
         }
-
-//        System.out.println((Arrays.toString(removeElement(elem))));
-
+        String[] resultArr = new String[set.size()];
+        set.toArray(resultArr);
+        System.out.println(Arrays.toString(resultArr));
     }
 
-    public static String[] removeElement(String elem) {
-        Iterator<String> iter = arrayList.iterator();
-        while (iter.hasNext()) {
-            String str = iter.next();
-            if (str.equals(elem)) {
-                iter.remove();
-            }
-        }
-        String[] arr = new String[arrayList.size()];
-        arrayList.toArray(arr);
-        return arr;
-    }
 }
