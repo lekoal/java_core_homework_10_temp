@@ -34,6 +34,17 @@ public class Main {
         System.out.println();
         arrayUniqueElements(arrayDuplicateElements(arrayList), arrayList);
         System.out.println("List of unique elements: " + arrayList);
+        System.out.println();
+
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Куксюк", "89077425862");
+        phoneBook.add("Ахметов", "89125695451");
+        phoneBook.add("Ахметов", "84215265352");
+        phoneBook.get("Ахметов");
+        phoneBook.add("Крутиков", "87765342746");
+        phoneBook.get("Крутиков");
+        phoneBook.add("Куксюк", "86547311234");
+        phoneBook.get("Куксюк");
     }
 
     public static HashMap<String, Integer> arrayElementsCounter(ArrayList<String> arrayList) {
