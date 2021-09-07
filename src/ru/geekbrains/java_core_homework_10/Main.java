@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Set<String> set = new HashSet<>();
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("пропасть");
         arrayList.add("столик");
@@ -24,7 +23,36 @@ public class Main {
         arrayList.add("обстановка");
         arrayList.add("беседа");
         arrayList.add("житель");
-        Iterator<String> iter = arrayList.iterator();
+
+        System.out.println("Source array:");
+        System.out.println(arrayList);
+        System.out.println();
+        System.out.println("List of duplicate elements: " + arrayDuplicateElements(arrayList));
+        System.out.println();
+        System.out.println("Array elements count:");
+        System.out.println(arrayElementsCounter(arrayList));
+        System.out.println();
+        arrayUniqueElements(arrayDuplicateElements(arrayList), arrayList);
+        System.out.println("List of unique elements: " + arrayList);
+    }
+
+    public static HashMap<String, Integer> arrayElementsCounter(ArrayList<String> arrayList) {
+        HashMap<String, Integer> elemCount = new HashMap<>();
+        int k;
+        for (int i = 0; i < arrayList.size(); i++) {
+            k = 0;
+            for (int j = 0; j < arrayList.size(); j++) {
+                if (arrayList.get(i).equals(arrayList.get(j))) {
+                    k++;
+                    elemCount.put(arrayList.get(i), k);
+                }
+            }
+        }
+        return elemCount;
+    }
+
+    public static Set<String> arrayDuplicateElements(ArrayList<String> arrayList) {
+        Set<String> set = new HashSet<>();
         for (int i = 0; i < arrayList.size(); i++) {
             for (int j = i + 1; j < arrayList.size(); j++) {
                 if (arrayList.get(i).equals(arrayList.get(j))) {
@@ -32,18 +60,20 @@ public class Main {
                 }
             }
         }
+        return set;
+    }
+
+    public static void arrayUniqueElements(Set<String> set, ArrayList<String> arrayList) {
+        Iterator<String> iterator = arrayList.iterator();
         String[] repeatArr = new String[set.size()];
         set.toArray(repeatArr);
-        System.out.println(Arrays.toString(repeatArr));
-            while (iter.hasNext()) {
-                String str = iter.next();
-                for (int i = 0; i < repeatArr.length; i++) {
+        while (iterator.hasNext()) {
+            String str = iterator.next();
+            for (int i = 0; i < repeatArr.length; i++) {
                 if (str.equals(repeatArr[i])) {
-                    iter.remove();
+                    iterator.remove();
                 }
             }
         }
-        System.out.println(arrayList);
     }
-
 }
