@@ -46,7 +46,7 @@ public class Main {
         phoneBook.add("Куксюк", "86547311234");
         phoneBook.get("Куксюк");
     }
-
+// temp
     public static HashMap<String, Integer> arrayElementsCounter(ArrayList<String> arrayList) {
         HashMap<String, Integer> elemCount = new HashMap<>();
         int k;
